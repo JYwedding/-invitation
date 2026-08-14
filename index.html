@@ -90,20 +90,6 @@
   }
   .enter-btn:hover{background:var(--burgundy); color:var(--ivory);}
 
-  .spotify-player{
-    position:fixed; bottom:18px; right:18px; z-index:90;
-    width:300px; max-width:80vw;
-    border-radius:14px; overflow:hidden;
-    box-shadow:0 14px 34px rgba(78,15,48,0.28);
-    opacity:0; pointer-events:none;
-    transform:translateY(12px);
-    transition:opacity 0.6s ease, transform 0.6s ease;
-  }
-  .spotify-player.show{ opacity:1; pointer-events:auto; transform:translateY(0); }
-  @media(max-width:640px){
-    .spotify-player{ left:12px; right:12px; width:auto; bottom:12px; }
-  }
-
   /* ---------- Reveal ---------- */
   .reveal{opacity:0; transform:translateY(24px); transition:opacity 1s ease, transform 1s ease;}
   .reveal.in{opacity:1; transform:translateY(0);}
@@ -177,9 +163,10 @@
 
   /* ---------- Day cards ---------- */
   .day-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:50px;
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-top:50px;
   }
-  @media(max-width:720px){.day-grid{grid-template-columns:1fr;}}
+  @media(max-width:900px){.day-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:640px){.day-grid{grid-template-columns:1fr;}}
   .day-card{
     border:1px solid var(--line); padding:44px 30px; text-align:center;
     background:var(--ivory); position:relative;
@@ -395,9 +382,10 @@
   </div>
 </div>
 
-<!-- Reproductor de Spotify: "In A Little While" - U2 (streaming con licencia de Spotify) -->
-<div id="spotify-player" class="spotify-player"></div>
-<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+<!-- Música de fondo: coloca el archivo en assets/audio/JY.mp3 -->
+<audio id="bgm" preload="auto" loop>
+  <source src="assets/audio/JY.mp3" type="audio/mpeg">
+</audio>
 
 <main id="site">
 
@@ -446,7 +434,7 @@
     </div>
     <div class="day-grid">
       <div class="day-card reveal">
-        <div class="day-eyebrow">Recepción</div>
+        <div class="day-eyebrow">Bienvenida y drinks</div>
         <div class="day-time">15:00</div>
         <div class="day-place">Restaurante &amp; Salón San Pedro Huaquilpan</div>
         <div class="day-address">Jiménez 53, Centro<br>San Pedro Huaquilpan, Hidalgo</div>
@@ -459,8 +447,15 @@
         <div class="day-address">Jiménez 53, Centro<br>San Pedro Huaquilpan, Hidalgo</div>
         <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Restaurante%20%26%20Sal%C3%B3n%20San%20Pedro%20Huaquilpan%2C%20Jim%C3%A9nez%2053%2C%20Centro%2C%20San%20Pedro%20Huaquilpan%2C%20Hidalgo" target="_blank" rel="noopener">Ver ubicación</a>
       </div>
+      <div class="day-card reveal">
+        <div class="day-eyebrow">Recepción</div>
+        <div class="day-time">17:30</div>
+        <div class="day-place">Restaurante &amp; Salón San Pedro Huaquilpan</div>
+        <div class="day-address">Jiménez 53, Centro<br>San Pedro Huaquilpan, Hidalgo</div>
+        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Restaurante%20%26%20Sal%C3%B3n%20San%20Pedro%20Huaquilpan%2C%20Jim%C3%A9nez%2053%2C%20Centro%2C%20San%20Pedro%20Huaquilpan%2C%20Hidalgo" target="_blank" rel="noopener">Ver ubicación</a>
+      </div>
     </div>
-    <p class="same-venue-note reveal">La ceremonia y la recepción se realizan en el mismo lugar.</p>
+    <p class="same-venue-note reveal">Los tres momentos del día se realizan en el mismo lugar.</p>
   </section>
 
   <!-- ===================== GALERÍA ===================== -->
@@ -493,15 +488,9 @@
       <h2 class="display" style="font-size:2.2rem;">Programa</h2>
     </div>
     <div class="timeline reveal">
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:00</div><div class="tl-label">Recepción</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:15</div><div class="tl-label">Cóctel</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:00</div><div class="tl-label">Bienvenida y drinks</div></div>
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:45</div><div class="tl-label">Ceremonia</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:30</div><div class="tl-label">Cena</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">18:30</div><div class="tl-label">Baile de los novios y familiar</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">19:00</div><div class="tl-label">Mesa de dulces</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20:00</div><div class="tl-label">Pastel</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">21:00</div><div class="tl-label">Batucada</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">22:00</div><div class="tl-label">Tornafiesta (alimentos)</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:30</div><div class="tl-label">Recepción</div></div>
     </div>
   </section>
 
@@ -516,9 +505,9 @@
           <span class="swatch" style="background:#6E2439"></span>
           <span class="swatch" style="background:#C08497"></span>
           <span class="swatch" style="background:#EAC7BE"></span>
-          <span class="swatch" style="background:#E4CFB2"></span>
           <span class="swatch" style="background:#8FA377"></span>
         </div>
+        <p class="dc-note" style="margin-top:18px; font-size:0.72rem; opacity:0.65;">Nos reservamos el blanco y el beige para la novia</p>
       </div>
     </div>
   </section>
@@ -528,7 +517,7 @@
         <div class="section-inner reveal">
       <h2 class="display" style="font-size:2.2rem;">Mesa de regalos</h2>
       <p style="margin-top:14px; opacity:0.75; font-size:0.9rem;">Tu presencia es nuestro mayor regalo. Si deseas obsequiarnos algo, tenemos mesa en Liverpool.</p>
-      <a class="gift-btn" href="https://www.liverpool.com.mx/tienda/mesa-de-regalos" target="_blank" rel="noopener">Ir a la mesa</a>
+      <a class="gift-btn" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60012392" target="_blank" rel="noopener">Ir a la mesa</a>
     </div>
   </section>
 
@@ -548,16 +537,11 @@
       <div class="eyebrow">Para nuestros invitados de fuera</div>
       <h2 class="display" style="font-size:2.2rem;">Hospedaje</h2>
     </div>
-    <div class="stay-grid">
+    <div class="stay-grid" style="max-width:420px; margin:50px auto 0; grid-template-columns:1fr;">
       <div class="stay-card reveal">
-        <div class="stay-name">Hotel sugerido 1</div>
+        <div class="stay-name">Hotel recomendado</div>
         <div class="stay-dist">A minutos del lugar del evento</div>
-        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=hoteles+San+Pedro+Huaquilpan+Hidalgo" target="_blank" rel="noopener">Ver ubicación</a>
-      </div>
-      <div class="stay-card reveal">
-        <div class="stay-name">Hotel sugerido 2</div>
-        <div class="stay-dist">A minutos del lugar del evento</div>
-        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=hoteles+San+Pedro+Huaquilpan+Hidalgo" target="_blank" rel="noopener">Ver ubicación</a>
+        <a class="map-btn" href="https://maps.app.goo.gl/U9kZXyDD7rgo4S7q8?g_st=ic" target="_blank" rel="noopener">Ver ubicación</a>
       </div>
     </div>
   </section>
@@ -568,7 +552,7 @@
       <div class="eyebrow">Antes del 15 de agosto</div>
       <h2 class="display" style="font-size:2.4rem;">Confirma tu asistencia</h2>
       <div class="rule"></div>
-      <a class="rsvp-btn" href="https://wa.me/527713338613/?text=Hola%2C%20quiero%20confirmar%20mi%20asistencia%20a%20la%20boda%20de%20Jonathan%20y%20Yadira" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+      <a class="rsvp-btn" href="https://wa.me/527712427995/?text=Hola%2C%20quiero%20confirmar%20mi%20asistencia%20a%20la%20boda%20de%20Jonathan%20y%20Yadira%20%F0%9F%92%8D%0ASoy%20%5BNombre%5D%20y%20asistir%C3%A9%20con%20%5BNombre%20de%20acompa%C3%B1ante%5D." target="_blank" rel="noopener">Confirmar por WhatsApp</a>
     </div>
   </section>
 
@@ -585,33 +569,19 @@
 </main>
 
 <script>
-  // ---- Loader / entrada + música (Spotify, streaming con licencia) ----
+  // ---- Loader / entrada + música ----
   const loader = document.getElementById('loader');
   const enterBtn = document.getElementById('enterBtn');
-  const spotifyEl = document.getElementById('spotify-player');
-  let spotifyController = null;
-
-  window.onSpotifyIframeApiReady = (IFrameAPI) => {
-    const options = { uri: 'spotify:track:0vyVsDtLIJmq3kV3oz66dr', width: '100%', height: '80' };
-    IFrameAPI.createController(spotifyEl, options, (EmbedController) => {
-      spotifyController = EmbedController;
-    });
-  };
+  const bgm = document.getElementById('bgm');
 
   enterBtn.addEventListener('click', () => {
     // El clic en "Entrar" es el gesto del usuario que permite iniciar la reproducción.
     loader.classList.add('hide');
     document.body.style.overflow = 'auto';
-    spotifyEl.classList.add('show');
 
-    const tryPlay = () => { if (spotifyController) spotifyController.play(); };
-    tryPlay();
-    let tries = 0;
-    const iv = setInterval(() => {
-      tries++;
-      if (spotifyController) { tryPlay(); clearInterval(iv); }
-      if (tries > 25) clearInterval(iv);
-    }, 200);
+    bgm.currentTime = 0;
+    bgm.volume = 0.5;
+    bgm.play().catch(()=>{});
   });
 
   // ---- Reveal on scroll ----
