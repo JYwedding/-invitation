@@ -228,8 +228,10 @@
   .tl-item::before{
     content:''; position:absolute; top:9px; left:0; right:0; height:1px; background:var(--line);
   }
-  .tl-item:first-child::before{left:50%;}
-  .tl-item:last-child::before{right:50%;}
+  @media(min-width:721px){
+    .tl-item:first-child::before{left:50%;}
+    .tl-item:last-child::before{right:50%;}
+  }
   .tl-dot{
     width:9px; height:9px; border-radius:50%; background:var(--burgundy);
     margin:0 auto 22px; position:relative; z-index:1;
@@ -254,6 +256,10 @@
   .dc-note{font-size:0.85rem; opacity:0.7; margin-top:10px;}
   .dc-swatches{display:flex; justify-content:center; gap:12px; margin-top:28px;}
   .swatch{width:30px; height:30px; border-radius:50%; border:1px solid rgba(0,0,0,0.06);}
+  .dc-request{
+    font-family:var(--serif); font-style:italic; font-size:1.02rem; line-height:1.7;
+    color:var(--ink); opacity:0.8; max-width:480px; margin:26px auto 0;
+  }
 
   /* ---------- Gifts / envelopes ---------- */
   .gift-btn, .rsvp-btn{
@@ -513,8 +519,8 @@
           <span class="swatch" style="background:#EAC7BE"></span>
           <span class="swatch" style="background:#8FA377"></span>
         </div>
-        <p class="dc-note" style="margin-top:18px; font-size:0.72rem; opacity:0.65;">Reservamos el blanco y el beige para la novia</p>
       </div>
+      <p class="dc-request">Para que las fotografías luzcan en todo su esplendor, te pedimos amablemente evitar tonos blanco, marfil, beige, nude y pasteles muy claros, así como el rosa palo y el vino — colores que reservamos para la novia y las damas de honor. Gracias por tu comprensión; estamos muy ilusionados de celebrar junto a ti.</p>
     </div>
   </section>
 
